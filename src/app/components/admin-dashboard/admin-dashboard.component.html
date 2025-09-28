@@ -1,7 +1,21 @@
 <div class="p-4">
-    <p-card>
-      <h2>Admin Dashboard</h2>
-      <p>Welcome, Admin! You have full access.</p>
-      <button pButton label="Logout" (click)="logout()"></button>
-    </p-card>
-  </div>
+  <p-card>
+    <h2>Admin Dashboard</h2>
+    <p>Welcome, Admin! You have full access.</p>
+    <button pButton label="Logout" class="p-button-danger mt-2" (click)="logout()"></button>
+  </p-card>
+
+  <p-tabView class="mt-4">
+    <p-tabPanel header="Create Account">
+      <app-admin-account></app-admin-account>
+    </p-tabPanel>
+
+    <p-tabPanel header="Show All Accounts">
+      <app-manage-account></app-manage-account>
+    </p-tabPanel>
+
+    <p-tabPanel header="Reports">
+      <app-report></app-report>
+    </p-tabPanel>
+  </p-tabView>
+</div>

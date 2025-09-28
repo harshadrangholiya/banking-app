@@ -1,0 +1,83 @@
+<p-card class="mb-3">
+    <div class="p-d-flex p-ai-center p-flex-wrap p-gap-3">
+  
+      <!-- Month -->
+      <div class="p-d-flex p-ai-center">
+        <label for="month" class="p-mr-2">Month : </label>
+        <p-dropdown 
+          [options]="months" 
+          [(ngModel)]="month" 
+          placeholder="Select Month" 
+          inputId="month">
+        </p-dropdown>
+      </div>
+      <br>
+  
+      <!-- Year -->
+      <div class="p-d-flex p-ai-center">
+        <label for="year" class="p-mr-2">Year : </label>
+        <p-inputNumber 
+          [(ngModel)]="year" 
+          [min]="2000" 
+          [max]="2100" 
+          [showButtons]="true" 
+          inputId="year">
+        </p-inputNumber>
+      </div>
+      <br>
+      <!-- Button -->
+      <div>
+        <button 
+          pButton 
+          type="button" 
+          label="Fetch Report" 
+          icon="pi pi-search" 
+          (click)="fetchReport()" 
+          [disabled]="loading">
+        </button>
+      </div>
+  
+    </div>
+  </p-card>
+  
+  
+  <p-table styleClass="p-datatable-gridlines advanceTable"[value]="reportData" [loading]="loading" [paginator]="true" [rows]="5" dataKey="customerName" expandableRows>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem"></th>
+        <th>Customer Name</th>
+        <th>Email</th>
+        <th>Total Deposit</th>
+        <th>Total Withdrawal</th>
+      </tr>
+    </ng-template>
+  
+    <ng-template pTemplate="body" let-customer>
+      <tr>
+        <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            (click)="toggleRow(customer)"
+            [pRowToggler]="customer"
+            class="p-button-text p-button-rounded p-button-plain"
+            [icon]="customer.expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+          ></button>
+        </td>
+        <td>{{ customer.customerName }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.totalDeposit | currency }}</td>
+        <td>{{ customer.totalWithdrawal | currency }}</td>
+      </tr>
+    </ng-template>
+  
+    <ng-template pTemplate="rowexpansion" let-customer>
+      <div class="p-grid p-fluid">
+        <div class="p-col-12">
+          <pre>{{ customer | json }}</pre>
+        </div>
+      </div>
+    </ng-template>
+  </p-table>
+  

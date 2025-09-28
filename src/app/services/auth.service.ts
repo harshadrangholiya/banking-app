@@ -24,6 +24,9 @@ export class AuthService {
       tap(res => {
         if (!this.isBrowser()) return; // skip if not browser
 
+        if (res.data?.id) {
+          localStorage.setItem('userId', res.data.id);
+        }
         if (res.data?.token) {
           localStorage.setItem('auth_token', res.data.token);
         }
@@ -56,12 +59,19 @@ export class AuthService {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user_roles');
     localStorage.removeItem('username');
+    localStorage.removeItem('userId');
   }
 
   // Get stored token
   getToken(): string | null {
     if (!this.isBrowser()) return null;
     return localStorage.getItem('auth_token');
+  }
+
+  // Get user id
+  getUserId(): string | null {
+    if (!this.isBrowser()) return null;
+    return localStorage.getItem('userId');
   }
 
   // Get user roles

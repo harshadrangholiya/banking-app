@@ -1,6 +1,6 @@
 // src/app/services/account.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 
@@ -20,5 +20,23 @@ export class AccountService {
   getBalance(accountNumber: string): Observable<any> {
     const url = `${this.baseUrl}/balance/${accountNumber}`;
     return this.http.get(url, { headers: this.authService.getAuthHeaders() });
+  }
+
+  getAllAccounts(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/all`);
+  }
+
+  
+  /**
+   * Fetch paginated accounts from backend
+   * @param page current page (0-indexed)
+   * @param size rows per page
+   */
+  getAccounts(page: number, size: number): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page)
+      .set('size', size);
+
+    return this.http.get<any>(`${this.baseUrl}/withPagination`, { params });
   }
 }

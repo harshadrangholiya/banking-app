@@ -1,1 +1,44 @@
-<p>admin-account works!</p>
+<p-card header="Create Account" class="w-full max-w-md mx-auto mt-6 shadow-lg">
+    <form [formGroup]="accountForm" class="p-fluid">
+      
+      <!-- Customer Dropdown -->
+      <div class="p-field mb-4">
+        <label for="customer">Customer</label>
+        <p-dropdown
+          id="customer"
+          formControlName="customerId"
+          [options]="customers"
+          optionLabel="username"
+          optionValue="id"
+          placeholder="Select Customer"
+          [showClear]="true"
+          [filter]="true"
+          filterPlaceholder="Search customer">
+        </p-dropdown>
+      </div>
+  
+      <!-- Account Type Dropdown -->
+      <div class="p-field mb-4">
+        <label for="accountType">Account Type</label>
+        <p-dropdown
+          id="accountType"
+          formControlName="accountType"
+          [options]="accountTypes"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Select Account Type">
+        </p-dropdown>
+      </div>
+  
+      <!-- Action Buttons -->
+      <div class="flex justify-content-end gap-3 mt-6">
+        <button pButton type="button" label="Create Account" (click)="createAccount()" class="p-button-raised p-button-success"></button>
+        <button pButton type="button" label="Reset" (click)="accountForm.reset()" class="p-button-raised p-button-secondary"></button>
+      </div>
+  
+      <!-- Message -->
+      <p-message *ngIf="message" [severity]="messageSeverity" [text]="message" class="mt-4"></p-message>
+      
+    </form>
+  </p-card>
+  
