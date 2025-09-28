@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="register-container">
   <div class="register-card">
     <h2>Create Account</h2>
@@ -59,6 +60,14 @@
         <div *ngIf="registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched" 
              class="error-message">
           Phone number is required
+        </div>
+      </div>
+      <div class="form-group">
+        <p-dropdown [options]="roles" formControlName="role" placeholder="Select Role"
+        optionLabel="name" optionValue="name" [style]="{ width: '100%' }"></p-dropdown>
+        <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" 
+             class="error-message">
+        Role is required
         </div>
       </div>
 

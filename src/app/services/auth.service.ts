@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
+
+export interface Role {
+  id: number;
+  name: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -94,4 +99,14 @@ export class AuthService {
       Authorization: `Bearer ${this.getToken() ?? ''}`
     });
   }
+
+  getAllRoles(): Observable<Role[]> {
+    return this.http.get<{ status: number; message: string; data: Role[] }>(
+      `${this.baseUrl}/roles/all`,
+      { headers: this.getAuthHeaders() }
+    ).pipe(
+      map(res => res.data || [])
+    );
+  }
+  
 }
