@@ -8,11 +8,12 @@ import { AdminAccountComponent } from '../admin-account/admin-account.component'
 import { TabViewModule } from 'primeng/tabview';
 import { ManageAccountComponent } from '../manage-account/manage-account.component';
 import { ReportComponent } from '../report/report.component';
+import { AddressFormComponent } from '../address-form/address-form.component';
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [CommonModule, ButtonModule, CardModule,AdminAccountComponent,TabViewModule,ManageAccountComponent,ReportComponent],
+  imports: [CommonModule, ButtonModule, CardModule,AdminAccountComponent,TabViewModule,ManageAccountComponent,ReportComponent,AddressFormComponent],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'
 })

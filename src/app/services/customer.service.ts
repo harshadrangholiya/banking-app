@@ -9,6 +9,15 @@ export interface Customer {
   fullName: string;
   email: string;
 }
+export interface Address {
+  addressLine1: string;
+  addressLine2?: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  addressType: 'HOME' | 'WORK';
+}
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +40,11 @@ export class CustomerService {
   getAccountsByCustomerId(customerId:any): Observable<any> {
     const url = `${this.baseUrlForAccount}/findAccountNumbersByCustId/${customerId}`;
     return this.http.get(url, { headers: this.authService.getAuthHeaders() });
+  }
+
+  addAddress(customerId: any, address: Address): Observable<any> {
+    const headers = this.authService.getAuthHeaders();
+    return this.http.post(`${this.baseUrl}/${customerId}/addAddress`, address, { headers ,observe: 'response'});
   }
 
 }

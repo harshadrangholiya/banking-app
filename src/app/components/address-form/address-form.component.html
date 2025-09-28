@@ -1,0 +1,40 @@
+<p-card header="Add Address">
+    <!-- Bind formGroup to the parent container -->
+    <form [formGroup]="addressForm" (ngSubmit)="submitAddress()">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-6">
+          <label>Address Line 1</label>
+          <input pInputText formControlName="addressLine1" placeholder="Address Line 1"/>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label>Address Line 2</label>
+          <input pInputText formControlName="addressLine2"placeholder="Address Line 2" />
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+          <label>City</label>
+          <input pInputText formControlName="city" placeholder="City"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+          <label>State</label>
+          <input pInputText formControlName="state" placeholder="State"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+          <label>Postal Code</label>
+          <input pInputText formControlName="postalCode" placeholder="Postal Code"/>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label>Country</label>
+          <input pInputText formControlName="country" placeholder="Country"/>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label>Address Type</label>
+          <p-dropdown [options]="addressTypes" formControlName="addressType"placeholder="Address Type"></p-dropdown>
+        </div>
+        <br>
+        <div class="p-field p-col-12">
+          <button pButton label="Add Address" type="submit" [disabled]="isLoading"></button>
+        </div>
+      </div>
+    </form>
+  </p-card>
+  

@@ -9,10 +9,11 @@ import { CustomerBalanceComponent } from '../customer-balance/customer-balance.c
 import { CustomerWithdrawComponent } from '../customer-withdraw/customer-withdraw.component';
 import { CustomerDepositComponent } from '../customer-deposit/customer-deposit.component';
 import { CustomerTransactionHistoryComponent } from '../customer-transaction-history/customer-transaction-history.component';
+import { AddressFormComponent } from '../address-form/address-form.component';
 @Component({
   selector: 'app-customer-dashboard',
   standalone: true,
-  imports: [CommonModule, ButtonModule, CardModule,TabViewModule,CustomerBalanceComponent,CustomerWithdrawComponent,CustomerDepositComponent,CustomerTransactionHistoryComponent],
+  imports: [CommonModule, ButtonModule, CardModule,TabViewModule,CustomerBalanceComponent,CustomerWithdrawComponent,CustomerDepositComponent,CustomerTransactionHistoryComponent,AddressFormComponent],
   templateUrl: './customer-dashboard.component.html',
   styleUrl: './customer-dashboard.component.css'
 })
