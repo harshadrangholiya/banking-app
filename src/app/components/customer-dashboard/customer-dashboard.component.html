@@ -2,6 +2,24 @@
     <p-card>
       <h2>Customer Dashboard</h2>
       <p>Welcome, Customer! You have limited access.</p>
-      <button pButton label="Logout" (click)="logout()"></button>
+      <button pButton label="Logout" class="p-button-danger mt-2" (click)="logout()"></button>
     </p-card>
-  </div>
+  
+    <p-tabView class="mt-4"[(activeIndex)]="activeIndex"  (onChange)="onTabChange($event)">
+      <p-tabPanel header="Show Balance" >
+        <app-customer-balance #balanceComp></app-customer-balance>
+      </p-tabPanel>
+  
+      <p-tabPanel header="Withdraw Money">
+        <app-customer-withdraw></app-customer-withdraw>
+      </p-tabPanel>
+  
+      <p-tabPanel header="Deposit Money">
+        <app-customer-deposit></app-customer-deposit>
+      </p-tabPanel>
+
+      <p-tabPanel header="Transaction History">
+        <app-customer-transaction-history></app-customer-transaction-history>
+      </p-tabPanel>
+    </p-tabView>
+</div>

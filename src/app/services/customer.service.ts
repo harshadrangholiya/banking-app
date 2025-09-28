@@ -16,6 +16,7 @@ export interface Customer {
 export class CustomerService {
 
   private baseUrl = 'http://localhost:8080/customers'; // your Spring Boot API
+  private baseUrlForAccount = 'http://localhost:8080/accounts'; // your Spring Boot API
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
@@ -26,4 +27,10 @@ export class CustomerService {
       { headers: this.authService.getAuthHeaders() }
     );
   }
+
+  getAccountsByCustomerId(customerId:any): Observable<any> {
+    const url = `${this.baseUrlForAccount}/findAccountNumbersByCustId/${customerId}`;
+    return this.http.get(url, { headers: this.authService.getAuthHeaders() });
+  }
+
 }

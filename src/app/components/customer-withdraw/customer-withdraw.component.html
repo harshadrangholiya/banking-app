@@ -1,0 +1,42 @@
+<p-toast></p-toast>
+
+<p-card header="Withdraw Money">
+  <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()" class="p-fluid p-formgrid p-grid">
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="accountNumber">Select Account</label>
+    <p-dropdown
+        [options]="accounts"
+        formControlName="accountNumber"
+        optionLabel="accountNumber"
+        optionValue="accountNumber"
+        placeholder="Select Account"
+        [filter]="true"        
+        filterBy="accountNumber" 
+        [showClear]="true">      <!-- optional, adds a clear button -->
+    </p-dropdown>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="amount">Amount</label>
+      <p-inputNumber formControlName="amount" [min]="0" inputId="amount"></p-inputNumber>
+    </div>
+
+    <div class="p-field p-col-12 p-md-12">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          pInputText
+          formControlName="description"
+          placeholder="description"
+          class="p-inputtext p-component p-filled"
+        />
+      </div>
+      <br>
+
+    <div class="p-field p-col-12">
+      <button pButton type="submit" label="Withdraw" icon="pi pi-money-bill" [disabled]="loading"></button>
+    </div>
+
+  </form>
+</p-card>

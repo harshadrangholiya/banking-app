@@ -1,0 +1,19 @@
+<p-card header="My Accounts">
+    <p-table [value]="accounts" [loading]="loading" [paginator]="true" [rows]="5" [responsiveLayout]="'scroll'">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Account Number</th>
+          <th>Account Type</th>
+          <th>Balance</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-account>
+        <tr>
+          <td>{{ account.accountNumber }}</td>
+          <td>{{ account.accountType }}</td>
+          <td>{{ account.balance | currency }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+  

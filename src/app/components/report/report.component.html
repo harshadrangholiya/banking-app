@@ -33,7 +33,7 @@
           label="Fetch Report" 
           icon="pi pi-search" 
           (click)="fetchReport()" 
-          [disabled]="loading">
+          [disabled]="!month || !year || loading">
         </button>
       </div>
   

@@ -1,0 +1,40 @@
+<p-toast></p-toast>
+
+<p-card header="Deposit Money">
+  <form [formGroup]="depositForm" class="p-fluid p-formgrid p-grid">
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="account">Select Account</label>
+      <p-dropdown
+        [options]="accounts"
+        formControlName="accountNumber"
+        optionLabel="accountNumber"
+        optionValue="accountNumber"
+        [filter]="true"
+        placeholder="Select Account">
+      </p-dropdown>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="amount">Amount</label>
+      <p-inputNumber formControlName="amount" [min]="0.01" inputId="amount"></p-inputNumber>
+    </div>
+
+    <div class="p-field p-col-12 p-md-12">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="description"
+        placeholder="description"
+        class="p-inputtext p-component p-filled"
+      />
+    </div>
+    <br>
+
+    <div class="p-field p-col-12">
+      <button pButton label="Deposit" icon="pi pi-money-bill" type="button" (click)="deposit()" [disabled]="loading"></button>
+    </div>
+
+  </form>
+</p-card>

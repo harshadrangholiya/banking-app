@@ -1,0 +1,41 @@
+<p-toast></p-toast>
+
+<p-card header="Transaction History">
+  <div class="p-fluid p-formgrid p-grid">
+
+    <div class="p-field p-col-12 p-md-6">
+      <label>Select Account</label>
+      <p-dropdown
+        [options]="accounts"
+        [(ngModel)]="selectedAccount"
+        optionLabel="accountNumber"
+        placeholder="Select Account"
+        [filter]="true"
+        (onChange)="fetchTransactions()">
+      </p-dropdown>
+    </div>
+
+  </div>
+
+  <p-table [value]="transactions" [paginator]="true" [rows]="10" [loading]="loading" class="mt-3">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Account Number</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-transaction>
+      <tr>
+        <td>{{ transaction.accountNumber }}</td>
+        <td>{{ transaction.amount | currency }}</td>
+        <td>{{ transaction.type }}</td>
+        <td>{{ transaction.description }}</td>
+        <td>{{ transaction.transactionTime | date:'short' }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
